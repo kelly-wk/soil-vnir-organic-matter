@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#6657A8">
+  <meta name="description" content="A redesigned VNIR spectral-regression workflow with grouped splits, fold-local preprocessing, and predictive intervals.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="土壌VNIRスペクトルによる有機物含有量予測 / Soil Organic-Matter Content Prediction from VNIR Spectra">
+  <meta property="og:description" content="A redesigned VNIR spectral-regression workflow with grouped splits, fold-local preprocessing, and predictive intervals.">
+  <meta property="og:url" content="https://kelly-wk.github.io/soil-vnir-organic-matter/">
+  <meta property="og:image" content="https://kelly-wk.github.io/soil-vnir-organic-matter/social-preview.svg">
+  <title>土壌VNIRスペクトルによる有機物含有量予測 / Soil Organic-Matter Content Prediction from VNIR Spectra</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="tier-public_case_study" style="--accent:#6657A8;--accent-dark:#252A32;--accent-soft:#ECE9F7;--hero-start:#252A32">
+  <a class="skip-link" href="#content">本文へ / Skip to content</a>
+  <header class="project-hero">
+    <div class="hero-inner">
+      <div class="hero-topline">
+        <div class="eyebrow">
+          <span>AI・機械学習 / AI &amp; Machine Learning</span>
+        </div>
+        <p class="tier-badge"><span lang="ja">公開ケーススタディ</span><span lang="en">Public case study</span></p>
+      </div>
+      <h1><span lang="ja">土壌VNIRスペクトルによる有機物含有量予測</span><span lang="en">Soil Organic-Matter Content Prediction from VNIR Spectra</span></h1>
+      <div class="hero-summary">
+        <div class="copy-pair lede"><p lang="ja">VNIRスペクトル回帰を、グループ分割・フォールド内前処理・予測区間まで含めて再設計した事例。</p><p class="translation" lang="en">A redesigned VNIR spectral-regression workflow with grouped splits, fold-local preprocessing, and predictive intervals.</p></div>
+        <div class="hero-facts">
+          <dl class="project-meta">
+            <div><dt>状態 / Status</dt><dd><span lang="ja">修復済み・公開版は合成データ</span><span lang="en">Repaired / public synthetic workflow</span></dd></div>
+            <div><dt>言語 / Language</dt><dd>Python</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="method-block">
+        <p class="method-label">技術スタック / Tech Stack</p>
+        <ul class="method-list" aria-label="Methods"><li>scikit-learn</li><li>Ridge regression</li><li>PLS regression</li><li>LASSO</li><li>Nested grouped cross-validation</li><li>Split conformal prediction</li></ul>
+      </div>
+    </div>
+  </header>
+
+  <main id="content" class="shell">
+    <section class="evidence-figure" aria-labelledby="figure-title">
+      <div class="section-heading"><p>00</p><h2 id="figure-title">代表的な成果図 <span lang="en">Selected Result Figure</span></h2></div>
+      <figure>
+        <img src="assets/hero.svg" alt="土壌VNIRスペクトルによる有機物含有量予測の代表的な成果図 / Selected result figure for Soil Organic-Matter Content Prediction from VNIR Spectra">
+        <figcaption><span lang="ja">公開可能な検証結果から選んだ図です。</span> <span lang="en">Selected from the validation evidence cleared for publication.</span></figcaption>
+      </figure>
+    </section>
+    <section aria-labelledby="highlights-title">
+      <div class="section-heading"><p>01</p><h2 id="highlights-title">主なポイント <span lang="en">Highlights</span></h2></div>
+      <div class="highlight-grid"><article class="highlight">
+          <span class="highlight-number" aria-hidden="true">1</span>
+          <div class="copy-pair"><p lang="ja">スペクトル前処理と特徴選択を交差検証フォールド内へ移し、情報漏洩を防止。</p><p class="translation" lang="en">Moved spectral preprocessing and feature selection inside cross-validation folds to prevent leakage.</p></div>
+        </article><article class="highlight">
+          <span class="highlight-number" aria-hidden="true">2</span>
+          <div class="copy-pair"><p lang="ja">52サイトの公開合成フィクスチャで、グループ分割を含む全工程を再実行可能。</p><p class="translation" lang="en">A public synthetic 52-site fixture supports a clean rerun of the full grouped workflow.</p></div>
+        </article><article class="highlight">
+          <span class="highlight-number" aria-hidden="true">3</span>
+          <div class="copy-pair"><p lang="ja">複数回帰器の比較に加え、split conformal法による予測不確実性を実装。</p><p class="translation" lang="en">Implemented split-conformal predictive uncertainty alongside comparison of multiple regressors.</p></div>
+        </article></div>
+    </section>
+
+    <section aria-labelledby="flow-title">
+      <div class="section-heading"><p>02</p><h2 id="flow-title">研究の流れ <span lang="en">Research Flow</span></h2></div>
+      <ol class="flow-grid"><li class="flow-card" data-step="1">
+              <h3><span lang="ja">課題</span><span lang="en">Problem</span></h3>
+              <div class="copy-pair"><p lang="ja">高次元スペクトルから土壌有機物を予測する際のリークと過度に楽観的な評価を抑える。</p><p class="translation" lang="en">Reduce leakage and overly optimistic evaluation when predicting soil organic matter from high-dimensional spectra.</p></div>
+            </li><li class="flow-card" data-step="2">
+              <h3><span lang="ja">方法</span><span lang="en">Method</span></h3>
+              <div class="copy-pair"><p lang="ja">Ridge、PLS、LASSOを、サイト単位のネスト交差検証とフォールド内前処理で比較する。</p><p class="translation" lang="en">Compare Ridge, PLS, and LASSO with site-grouped nested cross-validation and fold-local preprocessing.</p></div>
+            </li><li class="flow-card" data-step="3">
+              <h3><span lang="ja">検証</span><span lang="en">Validation</span></h3>
+              <div class="copy-pair"><p lang="ja">公開合成データで再現性を確認し、グループ外評価と適合型予測区間を用いる。</p><p class="translation" lang="en">Validate reproducibility on public synthetic data using held-out groups and conformal prediction intervals.</p></div>
+            </li><li class="flow-card" data-step="4">
+              <h3><span lang="ja">成果</span><span lang="en">Outcome</span></h3>
+              <div class="copy-pair"><p lang="ja">実データを公開せずに、監査可能なモデリング手順と不確実性評価を提示。</p><p class="translation" lang="en">Demonstrates an auditable modeling and uncertainty workflow without publishing the real dataset.</p></div>
+            </li></ol>
+    </section>
+
+    <section class="limitations" aria-labelledby="limits-title">
+      <div class="section-heading"><p>03</p><h2 id="limits-title">限界と適用範囲 <span lang="en">Limitations &amp; Scope</span></h2></div>
+      <ul><li><div class="copy-pair"><p lang="ja">実データにはサイト・年・装置の十分なメタデータがなく、公開版の合成結果は圃場実装性能を示さない。</p><p class="translation" lang="en">The real data lack sufficient site, year, and instrument metadata, and synthetic results do not establish field-deployment performance.</p></div></li></ul>
+    </section>
+
+    <section class="publication" aria-labelledby="publication-title">
+      <div class="section-heading"><p>04</p><h2 id="publication-title">公開範囲 <span lang="en">Publication Boundary</span></h2></div>
+      <div class="publication-panel">
+        <p class="tier-badge"><span lang="ja">公開ケーススタディ</span><span lang="en">Public case study</span></p>
+        <div class="copy-pair"><p lang="ja">実データは非公開。公開ページの図表と数値はすべて合成フィクスチャ由来で、方法と検証手順のみを紹介する。</p><p class="translation" lang="en">The real data remain private. Every public figure and number comes from a synthetic fixture and is used only to present the method and validation workflow.</p></div>
+      </div>
+      <div class="cta-grid"><a class="cta" href="https://github.com/kelly-wk/soil-vnir-organic-matter"><strong lang="ja">リポジトリ</strong><span lang="en">Repository</span><span aria-hidden="true">↗</span></a><a class="cta" href="https://github.com/kelly-wk/soil-vnir-organic-matter/blob/main/CASE_STUDY.md"><strong lang="ja">レポート</strong><span lang="en">Report</span><span aria-hidden="true">↗</span></a><span class="cta is-disabled" aria-disabled="true"><strong lang="ja">再現手順</strong><span lang="en">Reproduce</span><small>この公開レベルでは利用できません / Not available at this publication tier</small></span></div>
+    </section>
+  </main>
+
+  <footer>
+    <p><span lang="ja">公開レベルはページ上で常に明示されます。</span> <span lang="en">Publication tier is always shown explicitly.</span></p>
+    <p>kelly-wk · soil-vnir-organic-matter</p>
+  </footer>
+</body>
+</html>
